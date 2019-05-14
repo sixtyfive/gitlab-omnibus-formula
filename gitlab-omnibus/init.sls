@@ -80,6 +80,9 @@ mattermost-url:
     - append_if_not_found: True
     - require:
       - pkg: gitlab
+    - onchanges_in:
+      - cmd: gitlab-reconfigure
+
 {% endif %}
 
 {% if 'certificate' in gitlab.pki %}
