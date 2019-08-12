@@ -85,6 +85,7 @@ mattermost-url:
 
 {% endif %}
 
+{% if gitlab.pki %}
 {% if 'certificate' in gitlab.pki %}
 gitlab-ssl-cert:
   file.managed:
@@ -105,6 +106,7 @@ gitlab-ssl-key:
         {{ gitlab.pki.key | indent(8) }}
     - require:
       - pkg: gitlab
+{% endif %}
 {% endif %}
 
 gitlab-config:

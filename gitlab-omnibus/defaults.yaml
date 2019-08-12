@@ -1,4 +1,5 @@
 gitlab:
+  selinux: true
   url: http://gitlab.example.com
   config_file: /etc/gitlab/gitlab.rb
   secrets_file: /etc/gitlab/gitlab-secrets.json
