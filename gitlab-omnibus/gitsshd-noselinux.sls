@@ -1,20 +1,20 @@
 {% from "gitlab-omnibus/map.jinja" import gitlab with context %}
 
-gitsshd:
+gitsshd-noselinux:
   file.managed:
     - name: /etc/systemd/system/gitsshd.service
-    - source: salt://gitlab-omnibus/files/gitsshd.service
+    - source: salt://gitlab-omnibus/files/gitsshd-noselinux.service
 
   module.wait:
     - name: service.systemctl_reload
     - watch:
-      - file: gitsshd
+      - file: gitsshd-noselinux
 
   service.running:
     - name: gitsshd
     - enable: True
     - require:
-      - file: gitsshd
+      - file: gitsshd-noselinux
       - file: gitsshd-config
 
 gitsshd-config:
