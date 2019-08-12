@@ -4,7 +4,9 @@ After=network.target sshd-keygen.service
 Wants=sshd-keygen.service
 
 [Service]
+{%- if grains.os_family == 'RedHat' %}
 EnvironmentFile=/etc/sysconfig/sshd
+{%- endif %}
 ExecStart=/usr/sbin/sshd -D $OPTIONS -f /etc/ssh/gitsshd_config
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process

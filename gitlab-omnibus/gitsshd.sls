@@ -4,7 +4,8 @@
 gitsshd:
   file.managed:
     - name: /etc/systemd/system/gitsshd.service
-    - source: salt://gitlab-omnibus/files/gitsshd.service
+    - source: salt://gitlab-omnibus/files/gitsshd.service.jinja
+    - template: jinja
 
   module.wait:
     - name: service.systemctl_reload
