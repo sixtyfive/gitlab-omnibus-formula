@@ -58,4 +58,3 @@ gitsshd-selinux-restorecon:
     - watch:
       - cmd: gitsshd-selinux-pid
 {% endif %}
-
