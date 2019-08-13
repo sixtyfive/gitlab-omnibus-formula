@@ -30,5 +30,5 @@ gitsshd-config:
         config: {{ gitlab.gitsshd|json }}
 
 {% if gitlab.selinux %}
-{% include 'gitsshd-selinux.sls' %}
+{% include 'gitlab-omnibus/gitsshd-selinux.sls' %}
 {% endif %}
