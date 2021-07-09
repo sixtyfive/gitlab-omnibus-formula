@@ -85,6 +85,7 @@ mattermost-url:
 
 {% endif %}
 
+{% if gitlab.pki %}
 {% if 'certificate' in gitlab.pki %}
 gitlab-ssl-cert:
   file.managed:
@@ -105,6 +106,7 @@ gitlab-ssl-key:
         {{ gitlab.pki.key | indent(8) }}
     - require:
       - pkg: gitlab
+{% endif %}
 {% endif %}
 
 gitlab-config:
@@ -138,10 +140,9 @@ gitlab-upgrade:
 # gitlab does not initialize the service, if a docker-environment is detected
 gitlab-reconfigure:
   cmd.run:
-    - name: rm -f /.dockerenv && gitlab-ctl reconfigure
+    - name: rm -f /.dockerenv ; gitlab-ctl reconfigure
     - require:
       - pkg: gitlab
     - onchanges:
       - file: gitlab-config
       - file: gitlab-url
-

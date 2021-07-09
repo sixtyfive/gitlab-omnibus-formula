@@ -41,4 +41,3 @@ gitlab-runner:
     - require:
       - pkgrepo: gitlab-runner-repo
       - pkg: gitlab-runner-deps
-

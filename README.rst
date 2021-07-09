@@ -23,6 +23,8 @@ Installs the GitLab CE server from the Omnibus packages.
 
 Sets up a SSH Server configuration, which allows only the git user to connect.
 
+There is a `selinux` configuration parameter (default: `true`) that causes a dependency on the selinux formula specified in `gitshelf.yml`.
+
 ``gitlab-omnibus.runner``
 -------------------------
 
